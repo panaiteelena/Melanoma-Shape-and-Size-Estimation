@@ -1,13 +1,7 @@
 # <ins>_TITLU  : ESTIMAREA DIMENSIUNII/FORMEI MELANOMULUI</ins>_
 
 
-## SCHEMA BLOC A PROIECTULUI :
-<img width="1731" height="3123" alt="schema_bloc" src="https://github.com/user-attachments/assets/9dd30d00-b28e-4d4d-9733-ffa5676d2a7c" />
-
-
-
-
-## SCURTĂ DESCRIERE A PROIECTULUI ȘI A COMPONENTELOR CARE APAR ÎN SCHEMA BLOC : 
+## SCURTĂ DESCRIERE A PROIECTULUI ȘI A SCHEMEI BLOC: 
 
 
 ### 1. INTRODUCERE
