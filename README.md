@@ -1,15 +1,15 @@
-# Melanoma Shape and Size Estimation (Estimarea formei și dimensiunii unui melanom)
+# Melanoma Shape and Size Estimation 
 
 This project, developed for the "Image Processing" discipline at the Gheorghe Asachi Technical University of Iași, aims to create an automated system for analyzing dermoscopic images. The primary objective is to identify and evaluate skin lesions (melanomas) to support a faster and more objective medical diagnosis.By utilizing advanced image processing techniques, the system extracts key morphological features—such as Area, Perimeter, and Circularity—which are critical in distinguishing between benign lesions and suspicious melanomas.
 
 ---
 
-## 📖 Introduction & Objectives
+##  Introduction & Objectives
 The system is designed to automate the medical analysis of skin lesions to aid in cancer diagnosis. By processing dermoscopic images, we extract key characteristics such as **Area**, **Perimeter**, and **Circularity** to identify the nature of the lesion
 
 ---
 
-## ⚙️ Processing Pipeline (Block Diagram)
+##  Processing Pipeline (Block Diagram)
 The project follows a rigorous flow consisting of three main stages
 
 ### 1. Preprocessing
@@ -27,7 +27,7 @@ The project follows a rigorous flow consisting of three main stages
 
 ---
 
-## 📊 Feature Extraction & Medical Interpretation
+##  Feature Extraction & Medical Interpretation
 From the final refined mask, we extract the following morphological descriptors:
 * **Area ($A$):** Total pixel count of the affected area
 * **Perimeter ($P$):** The length of the lesion's contour
@@ -37,7 +37,7 @@ From the final refined mask, we extract the following morphological descriptors:
 
 ---
 
-## 📈 Dataset & Performance Results
+##  Dataset & Performance Results
 * **Dataset:** ISIC Challenge Dataset containing 65 dermoscopic images in RGB format
 * **Evaluation Metrics:** Performance was measured against Ground-Truth masks using IoU, Dice and aria raport coefficients
 
@@ -50,12 +50,12 @@ The results highlight that post-processing significantly improves the accuracy o
 
 ---
 
-## 🏆 Final Report & Conclusions
+##  Final Report & Conclusions
 The project generates a descriptive report including the original image, the segmented mask, highlighted contours, and calculated values. This serves as a major support tool for medical professionals in monitoring skin lesion evolution
 
 ---
 
-## 👥 Authors
+##  Authors
 * [cite_start]**Aciocârlănoaei Georgiana** - Group 1310A [cite: 48]
 * [cite_start]**Panaite Elena - Alexandra** - Group 1309B [cite: 48]
 
