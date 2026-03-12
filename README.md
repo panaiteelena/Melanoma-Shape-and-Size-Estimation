@@ -60,3 +60,5 @@ The project generates a descriptive report including the original image, the seg
 * **Panaite Elena - Alexandra** - Group 1309B 
 
 **Institution:** "Gheorghe Asachi" Technical University of Iași
+[Poster - Estimarea formei si dimensiunii unui melanom.pdf](https://github.com/user-attachments/files/25928398/Poster.-.Estimarea.formei.si.dimensiunii.unui.melanom.pdf)
+
