@@ -56,7 +56,7 @@ The project generates a descriptive report including the original image, the seg
 ---
 
 ##  Authors
-* [cite_start]**Aciocârlănoaei Georgiana** - Group 1310A [cite: 48]
-* [cite_start]**Panaite Elena - Alexandra** - Group 1309B [cite: 48]
+* **Aciocârlănoaei Georgiana** - Group 1310A 
+* **Panaite Elena - Alexandra** - Group 1309B 
 
-[cite_start]**Institution:** "Gheorghe Asachi" Technical University of Iași[cite: 1, 2, 5].
+**Institution:** "Gheorghe Asachi" Technical University of Iași
