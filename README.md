@@ -1,56 +1,57 @@
 # Melanoma Shape and Size Estimation (Estimarea formei și dimensiunii unui melanom)
 
-[cite_start]This project, developed for the **"Image Processing"** discipline [cite: 3][cite_start], focuses on the automated analysis of dermoscopic images to identify and evaluate skin lesions (melanomas)[cite: 7]. [cite_start]The goal is to provide a faster and more objective diagnostic tool by extracting relevant morphological features[cite: 7, 9].
+This project, developed for the "Image Processing" discipline at the Gheorghe Asachi Technical University of Iași, aims to create an automated system for analyzing dermoscopic images. The primary objective is to identify and evaluate skin lesions (melanomas) to support a faster and more objective medical diagnosis.By utilizing advanced image processing techniques, the system extracts key morphological features—such as Area, Perimeter, and Circularity—which are critical in distinguishing between benign lesions and suspicious melanomas.
 
 ---
 
 ## 📖 Introduction & Objectives
-[cite_start]The system is designed to automate the medical analysis of skin lesions to aid in cancer diagnosis[cite: 7]. [cite_start]By processing dermoscopic images, we extract key characteristics such as **Area**, **Perimeter**, and **Circularity** to identify the nature of the lesion[cite: 17, 38].
+The system is designed to automate the medical analysis of skin lesions to aid in cancer diagnosis. By processing dermoscopic images, we extract key characteristics such as **Area**, **Perimeter**, and **Circularity** to identify the nature of the lesion
 
 ---
 
 ## ⚙️ Processing Pipeline (Block Diagram)
-[cite_start]The project follows a rigorous flow consisting of three main stages[cite: 8, 25]:
+The project follows a rigorous flow consisting of three main stages
 
 ### 1. Preprocessing
-* [cite_start]**Color to Grayscale:** Converting the image to simplify analysis[cite: 30].
-* [cite_start]**Gaussian Filter:** Applied for noise reduction[cite: 33].
-* [cite_start]**Black-Hat Transform & Inpainting:** Used to remove artifacts such as hairs and enhance lesion features[cite: 34, 35].
+* **Color to Grayscale:** Converting the image to simplify analysis
+* **Gaussian Filter:** Applied for noise reduction
+* **Black-Hat Transform:** Highlighting dark structures (like hairs) for removal
+* **Inpainting:** Removing artifacts (hairs/scales) and filling the gaps to focus solely on the skin lesion
 
 ### 2. Segmentation
-* [cite_start]**Otsu Segmentation:** Automatically separating the lesion from healthy skin based on thresholding[cite: 31].
+* **Otsu Segmentation:** Automatically separating the lesion from healthy skin based on thresholding
 
 ### 3. Post-processing
-* [cite_start]**Flood Fill & Morphological Operations:** Used to refine the segmented mask and fill internal gaps[cite: 32, 36].
-* [cite_start]**Connected Components:** Identifying and isolating the specific lesion area[cite: 37].
+* **Flood Fill & Morphological Operations:** Used to refine the segmented mask (by removing the vignette from dermatoscopical images) and fill internal gaps
+* **Connected Components:** Identifying and isolating the specific lesion area
 
 ---
 
 ## 📊 Feature Extraction & Medical Interpretation
-[cite_start]From the final refined mask, we extract the following morphological descriptors[cite: 38]:
-* [cite_start]**Area ($A$):** Total pixel count of the affected area[cite: 17, 38].
-* [cite_start]**Perimeter ($P$):** The length of the lesion's contour[cite: 17, 39].
-* [cite_start]**Circularity Coefficient ($C$):** Calculated as $$C = \frac{4\pi \cdot Area}{Perimeter^2}$$[cite: 40].
+From the final refined mask, we extract the following morphological descriptors:
+* **Area ($A$):** Total pixel count of the affected area
+* **Perimeter ($P$):** The length of the lesion's contour
+* **Circularity Coefficient ($C$):** Calculated as $$C = \frac{4\pi \cdot Area}{Perimeter^2}$$
     * **$C \approx 1$:** Regular shape, typically indicating a **benign** lesion.
     * **$C < 0.7$:** Irregular shape, suggesting a **suspicious** melanoma that requires further investigation.
 
 ---
 
 ## 📈 Dataset & Performance Results
-* [cite_start]**Dataset:** ISIC Challenge Dataset containing 65 dermoscopic images in RGB format[cite: 19, 20, 21].
-* [cite_start]**Evaluation Metrics:** Performance was measured against Ground-Truth masks using IoU and Dice coefficients[cite: 11, 12, 13].
+* **Dataset:** ISIC Challenge Dataset containing 65 dermoscopic images in RGB format
+* **Evaluation Metrics:** Performance was measured against Ground-Truth masks using IoU, Dice and aria raport coefficients
 
 | Metric | Initial Value (Mean) | Final Value (Mean) |
 | :--- | :---: | :---: |
-| **IoU (Intersection over Union)** | [cite_start]0.62812 [cite: 43] | [cite_start]**0.71937** [cite: 43] |
-| **Dice Coefficient** | [cite_start]0.74282 [cite: 43] | [cite_start]**0.81652** [cite: 43] |
+| **IoU (Intersection over Union)** | 0.62812 | **0.71937**|
+| **Dice Coefficient** | 0.74282  | **0.81652** |
 
-[cite_start]The results highlight that post-processing significantly improves the accuracy of the segmentation[cite: 46, 47].
+The results highlight that post-processing significantly improves the accuracy of the segmentation
 
 ---
 
 ## 🏆 Final Report & Conclusions
-[cite_start]The project generates a descriptive report including the original image, the segmented mask, highlighted contours, and calculated values[cite: 45]. [cite_start]This serves as a major support tool for medical professionals in monitoring skin lesion evolution[cite: 45].
+The project generates a descriptive report including the original image, the segmented mask, highlighted contours, and calculated values. This serves as a major support tool for medical professionals in monitoring skin lesion evolution
 
 ---
 
