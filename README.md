@@ -26,6 +26,7 @@ The project follows a rigorous flow consisting of three main stages
 * **Connected Components:** Identifying and isolating the specific lesion area
 
 ---
+<img width="934" height="367" alt="Screenshot 2026-03-12 075748" src="https://github.com/user-attachments/assets/ab7e7d4f-8116-4e98-82f5-cb75cc592ef7" />
 
 ##  Feature Extraction & Medical Interpretation
 From the final refined mask, we extract the following morphological descriptors:
@@ -45,6 +46,8 @@ From the final refined mask, we extract the following morphological descriptors:
 | :--- | :---: | :---: |
 | **IoU (Intersection over Union)** | 0.62812 | **0.71937**|
 | **Dice Coefficient** | 0.74282  | **0.81652** |
+
+<img width="874" height="288" alt="Screenshot 2026-03-12 075807" src="https://github.com/user-attachments/assets/55302dc0-5861-41b4-bfef-41d1f548b430" />
 
 The results highlight that post-processing significantly improves the accuracy of the segmentation
 
