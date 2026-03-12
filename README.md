@@ -1,65 +1,61 @@
-# <ins>_ ESTIMAREA DIMENSIUNII/FORMEI MELANOMULUI</ins>_
+# Melanoma Shape and Size Estimation (Estimarea formei și dimensiunii unui melanom)
 
+[cite_start]This project, developed for the **"Image Processing"** discipline [cite: 3][cite_start], focuses on the automated analysis of dermoscopic images to identify and evaluate skin lesions (melanomas)[cite: 7]. [cite_start]The goal is to provide a faster and more objective diagnostic tool by extracting relevant morphological features[cite: 7, 9].
 
-## SCURTĂ DESCRIERE A PROIECTULUI ȘI A SCHEMEI BLOC: 
+---
 
+## 📖 Introduction & Objectives
+[cite_start]The system is designed to automate the medical analysis of skin lesions to aid in cancer diagnosis[cite: 7]. [cite_start]By processing dermoscopic images, we extract key characteristics such as **Area**, **Perimeter**, and **Circularity** to identify the nature of the lesion[cite: 17, 38].
 
-### 1. INTRODUCERE
+---
 
-Proiectul intitulat "Estimarea dimensiunii/formei melanomului", dezvoltat în cadrul disciplinei "Prelucrarea imaginilor "  își propune dezvoltarea unui sistem automatizat pentru analiza imaginilor din domeniul medical, în cazul nostru, analiza imaginilor dermatoscopice care surprind leziuni cutanate ale pielii numite MELANOAME în scopul diagnosticării cancerului și a formelor sale.
-Prin prelucrarea  imaginilor, așa cum spune și titlul disciplinei, urmărim extragerea unor caracteristici relevante ce ne pot ajuta în identificarea diagnosticului, precum aria, perimetrul, simetria și coeficientul de circularitate a leziunii.
+## ⚙️ Processing Pipeline (Block Diagram)
+[cite_start]The project follows a rigorous flow consisting of three main stages[cite: 8, 25]:
 
-### 2.
+### 1. Preprocessing
+* [cite_start]**Color to Grayscale:** Converting the image to simplify analysis[cite: 30].
+* [cite_start]**Gaussian Filter:** Applied for noise reduction[cite: 33].
+* [cite_start]**Black-Hat Transform & Inpainting:** Used to remove artifacts such as hairs and enhance lesion features[cite: 34, 35].
 
-În schema bloc realizată mai sus, sunt punctate etapele parcurse de noi pentru realizarea acestui proiect.
+### 2. Segmentation
+* [cite_start]**Otsu Segmentation:** Automatically separating the lesion from healthy skin based on thresholding[cite: 31].
 
-### 2.1.
+### 3. Post-processing
+* [cite_start]**Flood Fill & Morphological Operations:** Used to refine the segmented mask and fill internal gaps[cite: 32, 36].
+* [cite_start]**Connected Components:** Identifying and isolating the specific lesion area[cite: 37].
 
-Primul pas în realizarea temei constă în analiza unui set de date – imagini medicale, unde sunt surprinse diverse tipuri de melanoame. Aceste imagini poartă numele de fotografii dermatoscopice și sunt capturate cu ajutorul unei camere digitale, sau cu ajutorul unui dermatoscop. Pentru a putea prelucra direct imaginile, ele vor trebui transpuse în diferite formate acceptate: jpeg, png, jpg etc.
-Imaginile sunt utilizate ca input pentru sistemul de prelucrare și pentru aplicația în sine ce urmează a fi dezvoltată.
+---
 
-### 2.2. PROCESAREA IMAGINILOR
-  Reprezintă componenta esențială pentru extragerea unor informații relevante și corecte. Aceasta se împarte în 3 mari subetape:
+## 📊 Feature Extraction & Medical Interpretation
+[cite_start]From the final refined mask, we extract the following morphological descriptors[cite: 38]:
+* [cite_start]**Area ($A$):** Total pixel count of the affected area[cite: 17, 38].
+* [cite_start]**Perimeter ($P$):** The length of the lesion's contour[cite: 17, 39].
+* [cite_start]**Circularity Coefficient ($C$):** Calculated as $$C = \frac{4\pi \cdot Area}{Perimeter^2}$$[cite: 40].
+    * **$C \approx 1$:** Regular shape, typically indicating a **benign** lesion.
+    * **$C < 0.7$:** Irregular shape, suggesting a **suspicious** melanoma that requires further investigation.
 
-a) Preprocesare:
--> scop: accentuarea caracteristicilor pentru analiză/redare;
--> una dintre cele mai utilizate metode pentru îmbunătățire se realizează în domeniul spațial unde lucrăm cu matricea de pixeli;
--> în domeniul spațial putem aplica operații punctuale precum: accentuarea contrastului, limitarea culorilor, binarizarea, negativarea, operațiuni de tip fereastră, corecția gamma, conversia color-greyscale;
+---
 
-b) Segmentare:
--> scop: separarea zonei afectate pe care vrem să o analizăm (melanomul) de pielea sănătoasă;
--> metode: segmentare bazată pe praguri, algoritmi de detecție a conturului;
+## 📈 Dataset & Performance Results
+* [cite_start]**Dataset:** ISIC Challenge Dataset containing 65 dermoscopic images in RGB format[cite: 19, 20, 21].
+* [cite_start]**Evaluation Metrics:** Performance was measured against Ground-Truth masks using IoU and Dice coefficients[cite: 11, 12, 13].
 
-c) Postprocesarea:
--> scop: rafinarea rezultatului segmentării și corectarea erorilor rămase;
--> aplicăm operații precum: netezirea conturului, umplerea golurilor, eliminarea zonelor nerelevante investigării noastre;
+| Metric | Initial Value (Mean) | Final Value (Mean) |
+| :--- | :---: | :---: |
+| **IoU (Intersection over Union)** | [cite_start]0.62812 [cite: 43] | [cite_start]**0.71937** [cite: 43] |
+| **Dice Coefficient** | [cite_start]0.74282 [cite: 43] | [cite_start]**0.81652** [cite: 43] |
 
-### 3. Analiza: EXTRAGEREA CARACTERISTICILOR
-  În urma etapei de segmentare, unde am obținut caracteristicile corecte, vom trece la analiza leziunii pentru a estima dimensiunea și forma.
-Estimarea dimensiunii melanomului analizat se poate face prin:
--> calculul ariei (numărul total de pixeli incluși în zona afectată);
--> calculul perimetrului (lungimea conturului zonei segmentate);
+[cite_start]The results highlight that post-processing significantly improves the accuracy of the segmentation[cite: 46, 47].
 
-Analiza formei se poate face prin:
--> evidențierea conturului;
--> analiza simetriei și a circularității, pentru care vom utiliza coeficientul de circularitate calculat pe baza formulei:
-C = (4π * Aria) / Perimetru^2;
--> în urma documentației medicale studiate, se observă faptul că acest coeficient este important în diagnostic, ceea ce înseamnă că:
-dacă C ≈ 1, formă rotundă, regulată ⇒ melanom benign,iar dacă C < 0.7, formă neregulată ⇒ forma melanomului este una suspectă în domeniu și necesită investigații suplimentare;
+---
 
-### 4. INTERPRETAREA REZULTATELOR
-  Obiectivele urmărite sunt:
--> compararea valorilor obținute cu datele de referință;
--> identificarea regularității / neregularității conturului;
--> emiterea unor etichete descriptive: melanom suspect, leziune regulată;
-Această etapă   reprezintă un sprijin major pentru diagnosticul medical;
+## 🏆 Final Report & Conclusions
+[cite_start]The project generates a descriptive report including the original image, the segmented mask, highlighted contours, and calculated values[cite: 45]. [cite_start]This serves as a major support tool for medical professionals in monitoring skin lesion evolution[cite: 45].
 
-### 5. RAPORT FINAL
-  La finalul proiectului, după scrierea codului și modificările făcute asupra lui și a imaginilor folosite din setul de date, se generează un raport descriptiv care include:
--> imaginea originală, imaginea segmentată, conturul evidențiat, valorile calculate pentru arie, perimetru și coeficient de formă, concluziile interpretate pe baza rezultatelor.
-Aceste rezultate pot fi folosite de către cadrele medicale pentru a completa investigațiile și pentru a monitoriza evoluția leziunilor cutanate.
+---
 
-### 6. CONCLUZIE
-  Proiectul propune un sistem eficient de prelucrare a imaginilor dermatoscopice pentru diagnosticarea / analiza formei melanomului. Prin integrarea unor metode specifice și a operațiilor aplicate imaginilor, obținem rezultate utile pentru un diagnostic rapid și precis.
+## 👥 Authors
+* [cite_start]**Aciocârlănoaei Georgiana** - Group 1310A [cite: 48]
+* [cite_start]**Panaite Elena - Alexandra** - Group 1309B [cite: 48]
 
-
+[cite_start]**Institution:** "Gheorghe Asachi" Technical University of Iași[cite: 1, 2, 5].
