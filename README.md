@@ -26,7 +26,10 @@ The project follows a rigorous flow consisting of three main stages
 * **Connected Components:** Identifying and isolating the specific lesion area
 
 ---
-<img width="934" height="367" alt="Screenshot 2026-03-12 075748" src="https://github.com/user-attachments/assets/ab7e7d4f-8116-4e98-82f5-cb75cc592ef7" />
+<img width="1587" height="715" alt="Screenshot 2026-03-12 080127" src="https://github.com/user-attachments/assets/849eb5b8-a4b3-41d1-9c0f-ed6a24067c76" />
+<img width="1570" height="709" alt="Screenshot 2026-03-12 080152" src="https://github.com/user-attachments/assets/83e23126-e4df-479c-9862-8944b5ad2af3" />
+<img width="1605" height="710" alt="Screenshot 2026-03-12 080242" src="https://github.com/user-attachments/assets/8426f39d-1c40-4d3b-bcb4-ea3f3aa16b44" />
+
 
 ##  Feature Extraction & Medical Interpretation
 From the final refined mask, we extract the following morphological descriptors:
